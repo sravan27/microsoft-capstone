@@ -1,44 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+/* Use Audiowide for MINDset, Merriweather for the rest */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Merriweather:wght@400;700&display=swap');
 
 .article-container {
   position: relative;
-  font-family: 'Merriweather', serif;
-  padding: 20px;
   background: #f5f5f5;
   color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: 'Merriweather', serif;
 }
 
+/* Header & Title */
 .site-header {
   text-align: center;
-  margin-bottom: 20px;
+  padding: 20px 0;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 0;
 }
 
 .site-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 54px;
   margin: 0;
+  display: inline-block;
 }
 
+.mindset-text {
+  font-family: 'Audiowide', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.bysna-text {
+  font-family: 'Merriweather', serif;
+  font-size: 18px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Navigation Panel (mock) */
+.nav-panel {
+  background: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav-panel ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.nav-panel li {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-panel li:hover {
+  color: #007bff;
+}
+
+/* Article Title: larger */
+.article-title {
+  text-align: center;
+  font-size: 48px;
+  margin: 20px 0;
+  color: #222;
+}
+
+/* Hero Image: full viewport height */
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rings Button Container: wide, centered, as a normal page element.
+   Adding a gradient border between bright red, light blue, and deep blue.
+*/
+.rings-button-container {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 700px;
+  background: #fff;
+  border: 3px solid transparent;
+  /*border-image: linear-gradient(180deg, lightblue, red, darkblue) 1;*/
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ring-label {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Article Body */
 .news-article {
   max-width: 800px;
-  margin: auto;
+  margin: 40px auto 60px;
   background: #fff;
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.news-article h2 {
-  font-size: 28px;
-  margin-top: 0;
-  color: #222;
-}
-
-.news-article img {
-  width: 400px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
 }
 
 .news-article p {
@@ -47,66 +131,29 @@
   font-size: 16px;
 }
 
-/* Floating Button: container 100x100px with circular background */
-.floating-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.floating-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  z-index: -1;
-}
-
-/* Floating Button Rings: container center (50,50), ring size = 45, offset = 25 */
-.triangle-ring {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-}
-
-/* Ring1: angle -90°: center = (50,25) → top-left = (50-22.5,25-22.5) = (27.5,2.5) */
-#ring1 {
-  top: 2.5px;
-  left: 27.5px;
-}
-
-/* Ring2: angle 30°: center = (50+25*cos30,50+25*sin30) = (50+21.65,50+12.5) = (71.65,62.5) → top-left = (71.65-22.5,62.5-22.5) = (49.15,40) */
-#ring2 {
-  top: 40px;
-  left: 49px;
-}
-
-/* Ring3: angle 150°: center = (50-21.65,62.5) = (28.35,62.5) → top-left = (28.35-22.5,62.5-22.5) = (5.85,40) */
-#ring3 {
-  top: 40px;
-  left: 5.85px;
-}
-
 /* SVG styles for Circular Progress */
 .progress-svg {
   transform: rotate(-90deg);
 }
 
-.progress-text {
-  font-size: 16px;
-  font-weight: bold;
+.progress-bar {
+  transition: stroke-dashoffset 1.5s ease;
 }
 
-/* Modal Overlay */
+.progress-text {
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeInText 1s ease 1s forwards;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Overlay & Content */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -172,7 +219,70 @@
   color: #555;
 }
 
-/* Modal Buttons Layout */
+/* Explanation Button & Content in Overlay */
+.explain-button {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 16px;
+  border: none;
+  background: #ddd;
+  color: #333;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.explain-button:hover {
+  background: #ccc;
+}
+
+.explain-content {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+/* Feedback Prompt and Emoji Buttons */
+.feedback-prompt {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-feedback {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.feedback-button {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border: none;
+  border-radius: 4px;
+  background: #f5f5f5; /* default state same as page background */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback-button.feedback-up {
+  background: #8bc34a;
+}
+
+.feedback-button.feedback-down {
+  background: #f44336;
+}
+
+.feedback-button.feedback-question {
+  background: #9e9e9e;
+}
+
+/* Modal Buttons Layout (if needed) */
 .modal-buttons {
   display: flex;
   justify-content: center;
